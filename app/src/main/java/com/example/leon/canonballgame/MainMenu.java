@@ -7,12 +7,26 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ToggleButton;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class MainMenu extends AppCompatActivity {
+
+
+    private ToggleButton btn_level_1;
+    private ToggleButton btn_level_2;
+    private ToggleButton btn_level_3;
+    private ToggleButton btn_level_4;
+    private ToggleButton btn_level_5;
+
+    private int levelSelected;
+
+    public void setLevel( int level ) {
+        levelSelected = level;
+    }
 //    /**
 //     * Whether or not the system UI should be auto-hidden after
 //     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
