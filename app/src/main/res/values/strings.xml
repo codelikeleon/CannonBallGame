@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">CanonBallGame</string>
+
+    <!-- Main Menu -->
+    <string name="menu_level_label">Choose a level</string>
+    <string name="menu_level_1_btn">1</string>
+    <string name="menu_level_2_btn">2</string>
+    <string name="menu_level_3_btn">3</string>
+    <string name="menu_level_4_btn">4</string>
+    <string name="menu_level_5_btn">5</string>
+    <string name="menu_options_btn">Options</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">Canon\nBallsack</string>
+    
+    <!-- Options Menu -->
+    <string name="ops_about_btn">About</string>
+    <string name="ops_help_btn">Help</string>
+
+    <!-- Game mechanics -->
+    <string name="game_score_label">Score</string>
+    <string name="game_score">0</string>
+    <string name="level_header">Choose Level</string>
+    <string name="mainmenu_play_btn">Play!</string>
+
+</resources>
