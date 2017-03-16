@@ -9,8 +9,8 @@
     <string name="menu_level_4_btn">4</string>
     <string name="menu_level_5_btn">5</string>
     <string name="menu_options_btn">Options</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">Canon\nBallsack</string>
+    <string name="menu_level_header">Choose Level:</string>
+    <string name="menu_play_btn">Play!</string>
     
     <!-- Options Menu -->
     <string name="ops_about_btn">About</string>
@@ -19,7 +19,6 @@
     <!-- Game mechanics -->
     <string name="game_score_label">Score</string>
     <string name="game_score">0</string>
-    <string name="level_header">Choose Level</string>
-    <string name="mainmenu_play_btn">Play!</string>
+
 
 </resources>

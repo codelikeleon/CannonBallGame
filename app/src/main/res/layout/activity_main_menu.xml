@@ -9,6 +9,7 @@
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent">
 
@@ -16,16 +17,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#0099cc"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/Cannonball_logo"
+            android:layout_weight="0.6" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="74dp"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/level_header"
-            android:textSize="50sp" />
+            android:fontFamily="casual"
+            android:text="@string/menu_level_header"
+            android:textSize="50sp"
+            android:layout_weight="0.16" />
 
         <RadioGroup
             android:id="@+id/menu_toggle_btn_group"
@@ -41,9 +51,10 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="#3079ab"
+                android:fontFamily="casual"
                 android:onClick="onToggle"
                 android:textColor="@android:color/darker_gray"
-                android:background="#3079ab"
                 android:textOff="@string/menu_level_1_btn"
                 android:textOn="@string/menu_level_1_btn"
                 android:textSize="50sp" />
@@ -55,9 +66,10 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="#3079ab"
+                android:fontFamily="casual"
                 android:onClick="onToggle"
                 android:textColor="@android:color/darker_gray"
-                android:background="#3079ab"
                 android:textOff="@string/menu_level_2_btn"
                 android:textOn="@string/menu_level_2_btn"
                 android:textSize="50sp" />
@@ -69,9 +81,10 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="#3079ab"
+                android:fontFamily="casual"
                 android:onClick="onToggle"
                 android:textColor="@android:color/darker_gray"
-                android:background="#3079ab"
                 android:textOff="@string/menu_level_3_btn"
                 android:textOn="@string/menu_level_3_btn"
                 android:textSize="50sp" />
@@ -83,9 +96,10 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="#3079ab"
+                android:fontFamily="casual"
                 android:onClick="onToggle"
                 android:textColor="@android:color/darker_gray"
-                android:background="#3079ab"
                 android:textOff="@string/menu_level_4_btn"
                 android:textOn="@string/menu_level_4_btn"
                 android:textSize="50sp" />
@@ -97,9 +111,10 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="#3079ab"
+                android:fontFamily="casual"
                 android:onClick="onToggle"
                 android:textColor="@android:color/darker_gray"
-                android:background="#3079ab"
                 android:textOff="@string/menu_level_5_btn"
                 android:textOn="@string/menu_level_5_btn"
                 android:textSize="50sp" />
@@ -107,10 +122,46 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="77dp"
             android:layout_gravity="center"
-            android:text="@string/mainmenu_play_btn"
-            android:textSize="30sp" />
+            android:background="@android:color/holo_red_dark"
+            android:fontFamily="casual"
+            android:padding="10dp"
+            android:text="@string/menu_play_btn"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="40sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="0.24">
+
+            <ImageButton
+                android:id="@+id/imageButton9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="#0099cc"
+                app:srcCompat="@android:drawable/ic_menu_info_details"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true" />
+
+            <ImageButton
+                android:id="@+id/imageButton10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:background="#0099cc"
+                app:srcCompat="@android:drawable/ic_menu_help"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+
     </LinearLayout>
 </RelativeLayout>
     <!-- This FrameLayout insets its children based on system windows using
