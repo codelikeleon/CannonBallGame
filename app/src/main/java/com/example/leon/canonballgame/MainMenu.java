@@ -1,10 +1,11 @@
 package com.example.leon.canonballgame;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageButton;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -18,12 +19,10 @@ public class MainMenu extends AppCompatActivity implements Button.OnClickListene
     private Button btn_lvl_4;
     private Button btn_lvl_5;
     private Button btn_play;
+    private ImageButton btn_help;
+    private ImageButton btn_about;
 
     private int levelSelected;
-
-    public void setLevel( int level ) {
-        levelSelected = level;
-    }
 
     public void setSelectedLevelButtonColour( Button btn ) {
 
@@ -47,6 +46,9 @@ public class MainMenu extends AppCompatActivity implements Button.OnClickListene
         btn_lvl_3 = (Button) findViewById(R.id.menu_lvl_3_btn); btn_lvl_3.setOnClickListener(this);
         btn_lvl_4 = (Button) findViewById(R.id.menu_lvl_4_btn); btn_lvl_4.setOnClickListener(this);
         btn_lvl_5 = (Button) findViewById(R.id.menu_lvl_5_btn); btn_lvl_5.setOnClickListener(this);
+        btn_play  = (Button) findViewById(R.id.menu_play_btn);  btn_play.setOnClickListener(this);
+        btn_help  = (ImageButton) findViewById(R.id.menu_help_btn);  btn_help.setOnClickListener(this);
+        btn_about = (ImageButton) findViewById(R.id.menu_about_btn); btn_about.setOnClickListener(this);
     }
 
     @Override
@@ -76,6 +78,20 @@ public class MainMenu extends AppCompatActivity implements Button.OnClickListene
             case R.id.menu_lvl_5_btn:
                 levelSelected = 5;
                 setSelectedLevelButtonColour(btn_lvl_5);
+                break;
+
+            case R.id.menu_play_btn:
+
+                break;
+
+            case R.id.menu_help_btn:
+                Intent helpActivity = new Intent(this, HelpActivity.class);
+                startActivity( helpActivity );  //Create and start help activity
+                break;
+
+            case R.id.menu_about_btn:
+                Intent aboutActivity = new Intent(this, AboutActivity.class);
+                startActivity( aboutActivity );
                 break;
 
         }

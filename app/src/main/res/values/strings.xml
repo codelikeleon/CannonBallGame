@@ -11,14 +11,22 @@
     <string name="menu_options_btn">Options</string>
     <string name="menu_level_header">Choose Level:</string>
     <string name="menu_play_btn">Play!</string>
-    
-    <!-- Options Menu -->
-    <string name="ops_about_btn">About</string>
-    <string name="ops_help_btn">Help</string>
+
+    <!-- Help Menu -->
+    <string name="help_title">How to play:</string>
+    <string name="help_instructions">1. This is some text explaining how the game works.\n
+        2. This is some text explaining how the game works.\n
+        3. This is some text explaining how the game works.\n
+        4. This is some text explaining how the game works.</string>
+
+    <!-- About Menu -->
+    <string name="about_title">Candidate Number</string>
+    <string name="about_candidate_number">028016</string>
 
     <!-- Game mechanics -->
     <string name="game_score_label">Score</string>
     <string name="game_score">0</string>
+
 
 
 </resources>
