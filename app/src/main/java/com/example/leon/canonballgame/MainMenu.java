@@ -49,6 +49,9 @@ public class MainMenu extends AppCompatActivity implements Button.OnClickListene
         btn_play  = (Button) findViewById(R.id.menu_play_btn);  btn_play.setOnClickListener(this);
         btn_help  = (ImageButton) findViewById(R.id.menu_help_btn);  btn_help.setOnClickListener(this);
         btn_about = (ImageButton) findViewById(R.id.menu_about_btn); btn_about.setOnClickListener(this);
+
+        Intent media = new Intent(this, MediaService.class);
+        startService( media );
     }
 
     @Override
