@@ -25,7 +25,13 @@
         <service
             android:name=".MediaService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity
+            android:name=".CannonBallActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_cannon_ball"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>

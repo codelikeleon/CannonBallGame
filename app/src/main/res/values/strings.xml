@@ -24,9 +24,12 @@
     <string name="about_candidate_number">028016</string>
 
     <!-- Game mechanics -->
-    <string name="game_score_label">Score</string>
-    <string name="game_score">0</string>
+    <string name="time_remaining">Time remaining: %d seconds</string>
+    <string name="game_score">Score: %d </string>
 
+    <string name="title_activity_cannon_ball">CannonBallActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 
 </resources>
