@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class GameModel {
 
     ArrayList<Sprite> sprites;
-    int numSprites = 10;
+    int numSprites = 20;
     int score;
     int timeRemaining = 10000;
 
@@ -21,34 +21,34 @@ public class GameModel {
 
     static {
         paintLightGrey = new Paint();
-        paintLightGrey.setColor( Color.GRAY );
-        paintLightGrey.setStyle( Paint.Style.FILL );
-        paintLightGrey.setAntiAlias( true );
+        paintLightGrey.setColor(Color.GRAY);
+        paintLightGrey.setStyle(Paint.Style.FILL_AND_STROKE);
+        paintLightGrey.setAntiAlias(true);
 
         paintMagenta = new Paint();
-        paintMagenta.setColor( Color.MAGENTA );
-        paintMagenta.setStyle( Paint.Style.FILL );
-        paintMagenta.setAntiAlias( true );
+        paintMagenta.setColor(Color.MAGENTA);
+        paintMagenta.setStyle(Paint.Style.FILL_AND_STROKE);
+        paintMagenta.setAntiAlias(true);
 
         paintBlack = new Paint();
-        paintBlack.setColor( Color.BLACK );
-        paintBlack.setStyle( Paint.Style.FILL );
-        paintBlack.setAntiAlias( true );
+        paintBlack.setColor(Color.BLACK);
+        paintBlack.setStyle(Paint.Style.FILL);
+        paintBlack.setAntiAlias(true);
     }
 
     public GameModel() {
-        System.out.println( "GameModel: GameModel()" );
+        System.out.println("GameModel: GameModel()");
         initSprites();
         score = 0;
-        System.out.println( "GameModel:  finished init()" );
+        System.out.println("GameModel:  finished init()");
     }
 
-    public void update( Rect rectangle, int delay ) {
+    public void update(Rect rectangle, int delay) {
 
         // check that the drawing rectangle is valid
-        if ( rectangle.width() <= 0 || rectangle.height() <= 0 ) return;
+        if (rectangle.width() <= 0 || rectangle.height() <= 0) return;
 
-        if ( !gameOver() ) {
+        if (!gameOver()) {
             for (Sprite sprite : sprites) sprite.update(rectangle);
             timeRemaining -= delay;
         }
@@ -58,12 +58,12 @@ public class GameModel {
         return timeRemaining <= 0;
     }
 
-    public void click( float x, float y ) {
-        for ( Sprite s : sprites ) {
-            if ( s.contains( x, y ) ) {
+    public void click(float x, float y) {
+        for (Sprite s : sprites) {
+            if (s.contains(x, y)) {
                 score += s.getScore();
 //                s.setPos(0, 0);
-                sprites.remove( s );
+                sprites.remove(s);
 //                s.respawn();
                 return;
             }
@@ -72,94 +72,16 @@ public class GameModel {
 
     void initSprites() {
         sprites = new ArrayList<Sprite>();
-        for ( int i = 0; i < numSprites; i++ ) {
+        for (int i = 0; i < numSprites; i++) {
             Paint p = i % 3 == 0 ? paintMagenta : paintLightGrey;
-            Sprite sprite = new Sprite( p );
-            //^Sets width according to screen width
-                sprite.s.x = i + i * getSpacing();
-                sprite.s.y = 30;
-                sprites.add( sprite );
-        }
-    }
-
-    float getSpacing() {
-        return CannonBallActivity.getScreenWidth() / 10;
-    }
-}
-
-
-/**
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-
-import java.util.ArrayList;
-
-public class GameModel {
-    ArrayList<Sprite> sprites;
-    int nSprites = 20;
-    int score;
-    int timeRemaining = 10000;
-
-    static Paint paintBlue, paintGreen;
-
-    static {
-        paintBlue = new Paint();
-        paintBlue.setColor(Color.BLUE);
-        paintBlue.setStyle(Paint.Style.STROKE);
-        paintBlue.setAntiAlias(true);
-
-        paintGreen = new Paint();
-        paintGreen.setColor(Color.GREEN);
-        paintGreen.setStyle(Paint.Style.FILL);
-        paintGreen.setAntiAlias(true);
-    }
-
-    public void update(Rect rect, int delay) {
-        // check that the drawing rectangle is valid
-        if (rect.width() <= 0 || rect.height() <= 0) return;
-
-        if (!gameOver()) {
-            for (Sprite sprite : sprites) sprite.update(rect);
-            timeRemaining -= delay;
-        }
-    }
-
-    public boolean gameOver() {
-        return timeRemaining <= 0;
-    }
-
-    public GameModel() {
-        System.out.println("Bubble GameModel: GameModel()");
-        initSprites();
-        score = 0;
-        System.out.println("Bubble GameModel:  finished in ()");
-    }
-
-    public void click(float x, float y) {
-        for (Sprite s : sprites) {
-            if (s.contains(x, y)) {
-                score += s.getScore();
-                s.reSpawn();
-                return;
+            Sprite sprite = new Sprite(p);
+            if (i >= 10) {
+                sprite.setPos((i - 10) * sprite.width, 40 + sprite.height);
+                sprites.add(sprite);
+            } else {
+                sprite.setPos(i * sprite.width, 40);
+                sprites.add(sprite);
             }
         }
     }
-
-    void initSprites() {
-        sprites = new ArrayList<Sprite>();
-        for (int i = 0; i < nSprites; i++) {
-            Paint p = i % 2 == 0 ? paintBlue : paintGreen;
-            Sprite sprite = new Sprite( p );
-            sprite.s.x = i + i * getSpacing();
-            sprite.s.y = 30;
-            sprites.add( sprite );
-            sprites.add( sprite );
-        }
-    }
-
-    float getSpacing() {
-        return CannonballActivity.getScreenWidth() / 10;
-    }
 }
-**/

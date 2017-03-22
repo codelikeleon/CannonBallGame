@@ -5,8 +5,8 @@ public interface Constants {
     int randSize = 40;
     int proportion = 50;
 
-    int blueScore = -50;
-    int greenScore = 10;
+    int greyScore = 10;
+    int magentaScore = 40;
 
     float velocityScale = 5;
     String highScoreFile = "highScore.txt";

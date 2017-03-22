@@ -15,7 +15,8 @@ public class Sprite {
     Paint fg;
 
     static Random random = new Random();
-    float width;
+    float width = CannonBallActivity.getScreenWidth() / 10;
+    float height = CannonBallActivity.getScreenHeight() / 40;
 
     public Sprite(Paint fg) {
         this();
@@ -42,7 +43,7 @@ public class Sprite {
     }
 
     public int getScore() {
-        return fg == GameModel.paintMagenta ? greenScore : blueScore;
+        return fg == GameModel.paintMagenta ? magentaScore : greyScore;
     }
 
     public void update(Rect rect) {
@@ -51,11 +52,11 @@ public class Sprite {
     }
 
     public boolean contains( float x, float y ) {
-        return x >= s.x && x <= s.x + 60 && y >= s.y && y <= s.y + 30;
+        return x >= s.x && x <= s.x + width && y >= s.y && y <= s.y + height;
     }
 
     public void draw(Canvas c) {
-        c.drawRect(s.x, s.y, s.x + 60, s.y + 30, fg);
+        c.drawRect(s.x, s.y, s.x + width, s.y + height, fg);
     }
-    //                                                      ^width    ^height  of sprite
+    //                                                      ^width       ^height  of sprite
 }

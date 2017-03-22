@@ -27,8 +27,7 @@
     <string name="time_remaining">Time remaining: %d seconds</string>
     <string name="game_score">Score: %d </string>
 
-    <string name="time_remaining_format">Time remaining: %d
-seconds</string>
+    <string name="time_remaining_format">Time left: %d seconds</string>
     <string name="score_format">Score: %d </string>
 
 </resources>

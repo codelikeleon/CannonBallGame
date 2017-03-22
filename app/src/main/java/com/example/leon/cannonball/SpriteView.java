@@ -30,9 +30,9 @@ public class SpriteView extends View {
 
         g.drawText(getResources().getString(
                 R.string.time_remaining_format,
-                controller.getModel().timeRemaining/1000), 50, 40, textPaint);
+                controller.getModel().timeRemaining/1000), 200, 30, textPaint);
         g.drawText(getResources().getString(
-                R.string.score_format, controller.getModel().score), 50, 90,
+                R.string.score_format, controller.getModel().score), 10, 30,
                 textPaint);
 
     }
