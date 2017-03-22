@@ -1,4 +1,4 @@
-package com.example.leon.canonballgame;
+package com.example.leon.cannonball;
 
 import org.junit.Test;
 

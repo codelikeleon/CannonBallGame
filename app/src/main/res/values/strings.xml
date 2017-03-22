@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CanonBallGame</string>
+    <string name="app_name">CannonBall</string>
 
     <!-- Main Menu -->
     <string name="menu_level_label">Choose a level</string>
@@ -27,9 +27,8 @@
     <string name="time_remaining">Time remaining: %d seconds</string>
     <string name="game_score">Score: %d </string>
 
-    <string name="title_activity_cannon_ball">CannonBallActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-
+    <string name="time_remaining_format">Time remaining: %d
+seconds</string>
+    <string name="score_format">Score: %d </string>
 
 </resources>

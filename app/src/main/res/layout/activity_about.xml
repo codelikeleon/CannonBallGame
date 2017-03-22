@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.leon.canonballgame.AboutActivity">
+    tools:context="com.example.leon.cannonball.AboutActivity">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="fill_parent"
@@ -45,5 +45,4 @@
             android:padding="10dp"
             app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
     </RelativeLayout>
-
 </android.support.constraint.ConstraintLayout>

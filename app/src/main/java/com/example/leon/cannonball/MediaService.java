@@ -1,4 +1,5 @@
-package com.example.leon.canonballgame;
+package com.example.leon.cannonball;
+
 
 import android.app.Service;
 import android.content.Intent;
@@ -11,16 +12,16 @@ public class MediaService extends Service {
     MediaPlayer player;
 
     @Override
-    public IBinder onBind(Intent arg0) {
+    public IBinder onBind( Intent arg0 ) {
         return null;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        player = MediaPlayer.create(this, R.raw.background_music);
-        player.setLooping(true); // Set looping
-        player.setVolume(100,100);
+        player = MediaPlayer.create( this, R.raw.background_music );
+        player.setLooping( true ); // Set looping
+        player.setVolume( 100,100 );
     }
 
     @Override
@@ -29,7 +30,7 @@ public class MediaService extends Service {
         player.release();
     }
 
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand( Intent intent, int flags, int startId ) {
         player.start();
         return START_STICKY;
     }

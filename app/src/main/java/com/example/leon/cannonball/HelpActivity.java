@@ -1,4 +1,4 @@
-package com.example.leon.canonballgame;
+package com.example.leon.cannonball;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,12 +9,12 @@ import android.widget.ImageButton;
 public class HelpActivity extends AppCompatActivity implements Button.OnClickListener {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_help );
 
-        ImageButton btn_close = (ImageButton) findViewById(R.id.help_close);
-        btn_close.setOnClickListener(this);
+        ImageButton btn_close = ( ImageButton ) findViewById( R.id.help_close );
+        btn_close.setOnClickListener( this );
     }
 
     @Override

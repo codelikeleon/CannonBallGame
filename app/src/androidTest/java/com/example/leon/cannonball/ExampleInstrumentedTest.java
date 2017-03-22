@@ -1,4 +1,4 @@
-package com.example.leon.canonballgame;
+package com.example.leon.cannonball;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.leon.canonballgame", appContext.getPackageName());
+        assertEquals("com.example.leon.cannonball", appContext.getPackageName());
     }
 }
