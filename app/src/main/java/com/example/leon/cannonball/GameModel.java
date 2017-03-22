@@ -13,11 +13,12 @@ import java.util.ArrayList;
 public class GameModel {
 
     ArrayList<Sprite> sprites;
-    int numSprites = 20;
+    int numSprites = 50;
     int score;
     int timeRemaining = 10000;
 
     static Paint paintLightGrey, paintMagenta, paintBlack;
+    public Cannon cannon;
 
     static {
         paintLightGrey = new Paint();
@@ -73,9 +74,18 @@ public class GameModel {
     void initSprites() {
         sprites = new ArrayList<Sprite>();
         for (int i = 0; i < numSprites; i++) {
-            Paint p = i % 3 == 0 ? paintMagenta : paintLightGrey;
+            Paint p = i % 3 == 0 ? paintMagenta : paintLightGrey;   //TODO randomise block generation + add multiple colours?
             Sprite sprite = new Sprite(p);
-            if (i >= 10) {
+            if (i >= 40) {
+                sprite.setPos((i - 40) * sprite.width, 40 + sprite.height * 4);
+                sprites.add(sprite);
+            } else if (i >= 30) {
+                sprite.setPos((i - 30) * sprite.width, 40 + sprite.height * 3);
+                sprites.add(sprite);
+            } else if (i >= 20) {
+                sprite.setPos((i - 20) * sprite.width, 40 + sprite.height * 2);
+                sprites.add(sprite);
+            } else if (i >= 10) {
                 sprite.setPos((i - 10) * sprite.width, 40 + sprite.height);
                 sprites.add(sprite);
             } else {

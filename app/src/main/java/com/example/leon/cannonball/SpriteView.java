@@ -12,6 +12,7 @@ import java.util.List;
 public class SpriteView extends View {
     private Paint textPaint;
     CannonBallActivity controller;
+    public Cannon cannon;
 
     static String tag = "Bubble Sprite View: ";
     public void onDraw(Canvas g) {
@@ -22,6 +23,9 @@ public class SpriteView extends View {
         for (Sprite sprite : sprites) {
             sprite.draw(g);
         }
+
+        cannon.draw( g );
+
 
         textPaint = new Paint();
         textPaint.setTextSize((int) (30));
@@ -35,25 +39,33 @@ public class SpriteView extends View {
                 R.string.score_format, controller.getModel().score), 10, 30,
                 textPaint);
 
+
+
     }
 
     public SpriteView(Context context) {
         super(context);
         this.controller = (CannonBallActivity) context;
+        controller.getModel().cannon = new Cannon( context );
+        this.cannon = controller.getModel().cannon;
     }
 
     public SpriteView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.controller = (CannonBallActivity) context;
+        controller.getModel().cannon = new Cannon( context );
+        this.cannon = controller.getModel().cannon;
     }
 
     public SpriteView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.controller = (CannonBallActivity) context;
+        controller.getModel().cannon = new Cannon( context );
+        this.cannon = controller.getModel().cannon;
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent( MotionEvent event ) {
         float x = event.getX();
         float y = event.getY();
         controller.getModel().click(x, y);
