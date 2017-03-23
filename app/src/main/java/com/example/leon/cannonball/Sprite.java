@@ -11,7 +11,6 @@ import static com.example.leon.cannonball.Constants.*;
 
 public class Sprite {
     Vector2d s, v;
-    float rad;
     Paint fg;
 
     static Random random = new Random();
@@ -26,27 +25,23 @@ public class Sprite {
     public Sprite() {
         s = new Vector2d();
         v = new Vector2d();
-        reSpawn();
+//        reSpawn();
     }
 
     public void setPos( float x, float y ) {
         s.set( x, y );
     }
 
-    public void reSpawn() {
-//        rad = minRadius + random.nextInt(randSize);
-        rad = (float) CannonBallActivity.getScreenHeight()/proportion +
-                random.nextInt(40);
-        s.set(0,0);
-        v.set(velocityScale * (float) random.nextGaussian(),
-                velocityScale * (float) random.nextGaussian());
-    }
+//    public void reSpawn() {
+//        s.set( 0, 0 );
+//        v.set( velocityScale * ( float ) random.nextGaussian(), velocityScale * ( float ) random.nextGaussian() );
+//    }
 
     public int getScore() {
         return fg == GameModel.paintMagenta ? magentaScore : greyScore;
     }
 
-    public void update(Rect rect) {
+    public void update( Rect rect ) {
 //        s.add(v);
 //        s.wrap(rect.width(), rect.height());
     }
@@ -55,7 +50,7 @@ public class Sprite {
         return x >= s.x && x <= s.x + width && y >= s.y && y <= s.y + height;
     }
 
-    public void draw(Canvas c) {
-        c.drawRect(s.x, s.y, s.x + width, s.y + height, fg);
+    public void draw( Canvas c ) {
+        c.drawRect( s.x, s.y, s.x + width, s.y + height, fg );
     }
 }

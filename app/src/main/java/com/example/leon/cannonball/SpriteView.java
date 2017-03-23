@@ -21,22 +21,19 @@ public class SpriteView extends View {
     static String tag = "Bubble Sprite View: ";
     public void onDraw(Canvas g) {
 
+        //Background
         background = getResources().getDrawable(R.drawable.beach_background);
         background.setBounds( 0, 0, CannonBallActivity.getScreenWidth(), CannonBallActivity.getScreenHeight() );
         background.draw( g );
 
-        // get the model
         List<Sprite> sprites = controller.getModel().sprites;
-        // System.out.println(tag + "onDraw: " + sprites.get(0).v + " : " + sprites.get(0).s);
         for (Sprite sprite : sprites) {
             sprite.draw(g);
         }
 
-
-
-        cannon.draw( g );
         blocker.draw( g );
         cannonball.draw( g );
+        cannon.draw( g );
 
         textPaint = new Paint();
         textPaint.setTextSize((int) (30));
@@ -50,41 +47,39 @@ public class SpriteView extends View {
                 R.string.score_format, controller.getModel().score), 10, 30,
                 textPaint);
 
-
-
     }
 
     public SpriteView(Context context) {
         super(context);
         this.controller = (CannonBallActivity) context;
-        controller.getModel().cannon = new Cannon( context );
-        this.cannon = controller.getModel().cannon;
         controller.getModel().blocker = new Blocker( context );
         this.blocker = controller.getModel().blocker;
         controller.getModel().cannonball = new Cannonball( context );
         this.cannonball = controller.getModel().cannonball;
+        controller.getModel().cannon = new Cannon( context );
+        this.cannon = controller.getModel().cannon;
     }
 
     public SpriteView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.controller = (CannonBallActivity) context;
-        controller.getModel().cannon = new Cannon( context );
-        this.cannon = controller.getModel().cannon;
         controller.getModel().blocker = new Blocker( context );
         this.blocker = controller.getModel().blocker;
         controller.getModel().cannonball = new Cannonball( context );
         this.cannonball = controller.getModel().cannonball;
+        controller.getModel().cannon = new Cannon( context );
+        this.cannon = controller.getModel().cannon;
     }
 
     public SpriteView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.controller = (CannonBallActivity) context;
-        controller.getModel().cannon = new Cannon( context );
-        this.cannon = controller.getModel().cannon;
         controller.getModel().blocker = new Blocker( context );
         this.blocker = controller.getModel().blocker;
         controller.getModel().cannonball = new Cannonball( context );
         this.cannonball = controller.getModel().cannonball;
+        controller.getModel().cannon = new Cannon( context );
+        this.cannon = controller.getModel().cannon;
     }
 
     @Override
@@ -92,15 +87,11 @@ public class SpriteView extends View {
         float x = event.getX();
         float y = event.getY();
         controller.getModel().click(x, y);
-        List<Sprite> sprites = controller.getModel().sprites;
         if (event.getAction() ==
                 MotionEvent.ACTION_DOWN) {
-            for (Sprite s: sprites) {
-                if (s.contains(x, y)) {
-                    sprites.remove(s);
-                    break;
-                }
-            }
+            cannon.moveCannon( x );
+            cannonball.moveCannonBall( x );
+            cannonball.fireCannon();
         }
         return super.onTouchEvent(event);
     }

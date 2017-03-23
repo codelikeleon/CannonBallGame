@@ -6,6 +6,8 @@ import android.graphics.Rect;
 
 import java.util.ArrayList;
 
+import static com.example.leon.cannonball.Constants.blockerScore;
+
 /**
  * Created by Leon on 18/03/2017.
  */
@@ -52,9 +54,19 @@ public class GameModel {
         if (rectangle.width() <= 0 || rectangle.height() <= 0) return;
 
         if (!gameOver()) {
-            for (Sprite sprite : sprites)sprite.update(rectangle);
+            for (Sprite sprite : sprites) {
+                if ( blocker.contains( cannonball.pos.x, cannonball.pos.y ) ) {
+                    cannonball.hitBlocker();
+                    score += blockerScore;
+                } else if ( sprite.contains( cannonball.pos.x, cannonball.pos.y ) ) {
+                    sprites.remove( sprite );
+                    score += sprite.getScore();
+                    cannonball.reset();
+                }
+            }
 //            timeRemaining -= delay;
             blocker.update( rectangle );
+            cannonball.shootCannonBall();
         }
     }
 
@@ -63,15 +75,18 @@ public class GameModel {
     }
 
     public void click(float x, float y) {
-        for (Sprite s : sprites) {
-            if (s.contains(x, y)) {
-                score += s.getScore();
-//                s.setPos(0, 0);
-                sprites.remove(s);
-//                s.respawn();
-                return;
-            }
-        }
+        cannon.moveCannon( x );
+        cannonball.moveCannonBall( x );
+        cannonball.fireCannon();
+//        for (Sprite s : sprites) {
+//            if (s.contains(x, y)) {
+//                score += s.getScore();
+////                s.setPos(0, 0);
+//                sprites.remove(s);
+////                s.respawn();
+//                return;
+//            }
+//        }
     }
 
     void initSprites() {
