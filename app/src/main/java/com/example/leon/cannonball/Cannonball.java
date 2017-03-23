@@ -48,9 +48,7 @@ public class Cannonball {
 
     public void shootCannonBall() {
         if ( pos.y <= 0 || pos.y > CannonBallActivity.getScreenHeight() ) {
-            firing = false;
-            hitBlocker = false;
-            pos.y = CannonBallActivity.getScreenHeight();
+            reset();
         } else if ( hitBlocker ) {
             pos.subtract( v );
         } else if ( firing ) {
@@ -70,6 +68,7 @@ public class Cannonball {
         v.y = - cannonShootSpeed;
         firing = false;
         pos.y = CannonBallActivity.getScreenHeight();
+        hitBlocker = false;
     }
 
     public float getCentreXPos() {

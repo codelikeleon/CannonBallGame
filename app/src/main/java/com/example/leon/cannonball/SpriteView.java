@@ -19,9 +19,9 @@ public class SpriteView extends View {
     public Drawable background;
 
     static String TAG = "SpriteView: ";
-    public void onDraw(Canvas g) {
+    public void onDraw( Canvas g ) {
 
-        //Background
+        //Background image
         background = getResources().getDrawable(R.drawable.beach_background);
         background.setBounds( 0, 0, CannonBallActivity.getScreenWidth(), CannonBallActivity.getScreenHeight() );
         background.draw( g );
@@ -96,7 +96,7 @@ public class SpriteView extends View {
         float x = event.getX();
         float y = event.getY();
         if ( !cannonball.firing ) CannonBallActivity.SP.play( CannonBallActivity.CANNON_SOUND, 1, 1, 0, 0, 1 );
-        controller.getModel().click( x, y );
+        controller.getModel().click( x );
         if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
             cannon.moveCannon( x );
             cannonball.moveCannonBall( x );

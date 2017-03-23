@@ -30,7 +30,7 @@ public class MainMenuActivity extends AppCompatActivity implements Button.OnClic
     private ImageButton btn_help;
     private ImageButton btn_about;
 
-    private int levelSelected;
+    static int LEVEL;
 
     public void setSelectedLevelButtonColour( Button btn ) {
 
@@ -66,34 +66,36 @@ public class MainMenuActivity extends AppCompatActivity implements Button.OnClic
 
         switch ( v.getId() ) {
             case R.id.menu_lvl_1_btn:
-                levelSelected = 1;
-                System.out.println("button cilcked");
+                LEVEL = 1;
                 setSelectedLevelButtonColour( btn_lvl_1 );
                 break;
 
             case R.id.menu_lvl_2_btn:
-                levelSelected = 2;
+                LEVEL = 2;
                 setSelectedLevelButtonColour( btn_lvl_2 );
                 break;
 
             case R.id.menu_lvl_3_btn:
-                levelSelected = 3;
+                LEVEL = 3;
                 setSelectedLevelButtonColour( btn_lvl_3 );
                 break;
 
             case R.id.menu_lvl_4_btn:
-                levelSelected = 4;
+                LEVEL = 4;
                 setSelectedLevelButtonColour( btn_lvl_4 );
                 break;
 
             case R.id.menu_lvl_5_btn:
-                levelSelected = 5;
+                LEVEL = 5;
                 setSelectedLevelButtonColour( btn_lvl_5 );
                 break;
 
             case R.id.menu_play_btn:
-                Intent gameActivity = new Intent( this, CannonBallActivity.class );
-                startActivity( gameActivity );
+                if ( LEVEL > 0 && LEVEL <= 5 ) {
+                    System.out.println( "Starting level " + LEVEL );
+                    Intent gameActivity = new Intent(this, CannonBallActivity.class);
+                    startActivity(gameActivity);
+                }
                 break;
 
             case R.id.menu_help_btn:

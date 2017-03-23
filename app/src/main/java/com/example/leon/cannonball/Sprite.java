@@ -6,11 +6,11 @@ import android.graphics.Paint;
 import static com.example.leon.cannonball.Constants.*;
 
 public class Sprite {
-    Vector2d s, v;
+    Vector2d pos, v;
     Paint fg;
 
     float width = CannonBallActivity.getScreenWidth() / 10;
-    float height = CannonBallActivity.getScreenHeight() / 30;
+    float height = CannonBallActivity.getScreenHeight() / 25;
 
     public Sprite( Paint fg ) {
         this();
@@ -18,14 +18,19 @@ public class Sprite {
     }
 
     public Sprite() {
-        s = new Vector2d();
-        v = new Vector2d();
+        pos = new Vector2d();
+        v = new Vector2d( velocityScale * MainMenuActivity.LEVEL, 0 );
     }
 
     public void setPos( float x, float y ) {
-        s.set( x, y );
+        pos.set( x, y );
     }
 
+    public void update() {
+        pos.add( v );
+        if ( pos.x + width > CannonBallActivity.getScreenWidth() ) v.x *= -1;
+        else if ( pos.x < 0 ) v.x *= -1;
+    }
 
     public int getScore() {
         if ( fg == GameModel.paintLightGrey ) return greyScore;
@@ -34,10 +39,10 @@ public class Sprite {
     }
 
     public boolean contains( float x, float y ) {
-        return x >= s.x && x <= s.x + width && y >= s.y && y <= s.y + height;
+        return x >= pos.x && x <= pos.x + width && y >= pos.y && y <= pos.y + height;
     }
 
     public void draw( Canvas c ) {
-        c.drawRect( s.x, s.y, s.x + width, s.y + height, fg );
+        c.drawRoundRect( pos.x, pos.y, pos.x + width, pos.y + height, 5, 5, fg );
     }
 }

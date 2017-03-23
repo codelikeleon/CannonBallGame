@@ -24,7 +24,7 @@ public class Blocker {
 
     public Blocker( Context context ) {
         pos = new Vector2d( width * 3/2  - width / 2, height * 14/3 - height );
-        v = new Vector2d( velocityScale, 0 );
+        v = new Vector2d( 3/2 * velocityScale * MainMenuActivity.LEVEL, 0 );
         bmp = BitmapFactory.decodeResource( context.getResources(), R.drawable.crab_blocker );
         this.blocker = new BitmapDrawable( context.getResources(), bmp );
     }
@@ -37,8 +37,8 @@ public class Blocker {
         blocker.draw( c );
     }
 
-    public void update( Rect rect ) {
-        pos.add(v);
+    public void update() {
+        pos.add( v );
         if ( pos.x + width >= CannonBallActivity.getScreenWidth() ) v.x *= -1;
         else if ( pos.x <= 0 ) v.x *= -1;
     }

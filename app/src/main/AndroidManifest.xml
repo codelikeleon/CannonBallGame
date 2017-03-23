@@ -24,7 +24,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".CannonBallActivity"></activity>
+        <activity android:name=".CannonBallActivity" />
     </application>
 
 </manifest>
