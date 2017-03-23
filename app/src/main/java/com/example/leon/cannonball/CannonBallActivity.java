@@ -6,6 +6,12 @@ import android.graphics.Rect;
 import android.media.SoundPool;
 import android.os.Bundle;
 
+//TODO: App Icon
+//TODO: High Scores
+//TODO: Levels
+//TODO: Remove action bar / Change text
+//TODO: Documentation
+
 public class CannonBallActivity extends Activity {
 
     SpriteView view;
@@ -74,8 +80,8 @@ public class CannonBallActivity extends Activity {
         return Resources.getSystem().getDisplayMetrics().heightPixels;
     }
 
-    class GameThread extends Thread {
-        // have
+    private class GameThread extends Thread {
+
         boolean running = true;
 
         public void run() {

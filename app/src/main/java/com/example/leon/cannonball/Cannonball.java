@@ -71,4 +71,12 @@ public class Cannonball {
         firing = false;
         pos.y = CannonBallActivity.getScreenHeight();
     }
+
+    public float getCentreXPos() {
+        return pos.x + width / 2;
+    }
+
+    public float getCentreYPos() {
+        return pos.y + height / 2;
+    }
 }

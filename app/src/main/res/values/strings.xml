@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CannonBall</string>
+    <string name="app_name">Cannonball</string>
 
     <!-- Main Menu -->
     <string name="menu_level_label">Choose a level</string>
@@ -24,10 +24,7 @@
     <string name="about_candidate_number">028016</string>
 
     <!-- Game mechanics -->
-    <string name="time_remaining">Time remaining: %d seconds</string>
-    <string name="game_score">Score: %d </string>
-
     <string name="time_remaining_format">Time left: %d seconds</string>
-    <string name="score_format">Score: %d </string>
+    <string name="score_format">Score: %d</string>
 
 </resources>

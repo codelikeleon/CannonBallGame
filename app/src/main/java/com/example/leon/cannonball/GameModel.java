@@ -20,7 +20,7 @@ public class GameModel {
 
     ArrayList<Sprite> sprites;
     Random rand = new Random();
-    int numSprites = 50;        //Max numSprites = 50
+    int numSprites = 30;        //Max numSprites = 50
     int score;
     int timeRemaining = 10000;
 
@@ -59,13 +59,13 @@ public class GameModel {
         if ( rectangle.width() <= 0 || rectangle.height() <= 0 ) return;
 
         if ( !gameOver() ) {
-            if ( blocker.contains( cannonball.pos.x, cannonball.pos.y ) ) {
+            if ( blocker.contains( cannonball.getCentreXPos(), cannonball.getCentreYPos() ) ) {
                 cannonball.hitBlocker();
                 CannonBallActivity.SP.play( CannonBallActivity.OUCH_SOUND, 1, 1, 0, 0, 1 );
                 score += blockerScore;
             }
             for ( Sprite sprite : sprites ) {
-                if ( sprite.contains( cannonball.pos.x, cannonball.pos.y ) ) {
+                if ( sprite.contains( cannonball.getCentreXPos(), cannonball.getCentreYPos() ) ) {
                     sprites.remove( sprite );
                     if ( sprite.getScore() == yellowScore )
                         CannonBallActivity.SP.play( CannonBallActivity.TWINKLE_SOUND, 1, 1, 0, 0, 1 );
@@ -102,19 +102,19 @@ public class GameModel {
             Sprite sprite = new Sprite( p );
 
             if ( i >= 40 ) {
-                sprite.setPos( ( i - 40 ) * sprite.width, 40 + sprite.height * 4 );
+                sprite.setPos( ( i - 40 ) * sprite.width, sprite.height * 5 );
                 sprites.add( sprite );
             } else if ( i >= 30 ) {
-                sprite.setPos( ( i - 30 ) * sprite.width, 40 + sprite.height * 3 );
+                sprite.setPos( ( i - 30 ) * sprite.width, sprite.height * 4 );
                 sprites.add( sprite );
             } else if ( i >= 20 ) {
-                sprite.setPos( ( i - 20 ) * sprite.width, 40 + sprite.height * 2 );
+                sprite.setPos( ( i - 20 ) * sprite.width, sprite.height * 3 );
                 sprites.add( sprite );
             } else if ( i >= 10 ) {
-                sprite.setPos( ( i - 10 ) * sprite.width, 40 + sprite.height );
+                sprite.setPos( ( i - 10 ) * sprite.width, sprite.height * 2 );
                 sprites.add( sprite );
             } else {
-                sprite.setPos( i * sprite.width, 40 );
+                sprite.setPos( i * sprite.width, sprite.height );
                 sprites.add( sprite );
             }
         }

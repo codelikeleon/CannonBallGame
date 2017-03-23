@@ -5,15 +5,14 @@ import android.graphics.Paint;
 
 import static com.example.leon.cannonball.Constants.*;
 
-
 public class Sprite {
     Vector2d s, v;
     Paint fg;
 
     float width = CannonBallActivity.getScreenWidth() / 10;
-    float height = CannonBallActivity.getScreenHeight() / 40;
+    float height = CannonBallActivity.getScreenHeight() / 30;
 
-    public Sprite(Paint fg) {
+    public Sprite( Paint fg ) {
         this();
         this.fg = fg;
     }
@@ -30,7 +29,7 @@ public class Sprite {
 
     public int getScore() {
         if ( fg == GameModel.paintLightGrey ) return greyScore;
-        else if (fg == GameModel.paintMagenta ) return magentaScore;
+        else if ( fg == GameModel.paintMagenta ) return magentaScore;
         else return yellowScore;
     }
 
