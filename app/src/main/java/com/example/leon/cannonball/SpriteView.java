@@ -86,7 +86,8 @@ public class SpriteView extends View {
     public boolean onTouchEvent( MotionEvent event ) {
         float x = event.getX();
         float y = event.getY();
-        controller.getModel().click(x, y);
+        if ( !cannonball.firing ) CannonBallActivity.SP.play(CannonBallActivity.cannonSound, 1, 1, 0, 0, 1);
+        controller.getModel().click( x, y );
         if (event.getAction() ==
                 MotionEvent.ACTION_DOWN) {
             cannon.moveCannon( x );

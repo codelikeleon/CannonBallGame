@@ -3,16 +3,20 @@ package com.example.leon.cannonball;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 
 public class CannonBallActivity extends Activity {
 
     SpriteView view;
     GameModel model;
-    // keep a reference to the running thread so
-    // we can kill it from a lifecycle method
     GameThread runner;
-    static String tag = "Bubble: ";
+    static String tag = "Bubble: ";     //TODO: TAGs
+    static SoundPool SP;           //SoundPool better than MediaPlayer for sound effects as it can overlap and is faster
+    static int cannonSound;
+    static int ouchSound;
+    static int brickSmashSound;
 
     /**
      * Called when the activity is first created.
@@ -22,6 +26,10 @@ public class CannonBallActivity extends Activity {
         super.onCreate(savedInstanceState);
         model = new GameModel();
         view = new SpriteView(this);
+        SP = new SoundPool.Builder().setMaxStreams(5).build();
+        cannonSound = SP.load( this, R.raw.cannon_fire, 1 );
+        ouchSound = SP.load( this, R.raw.ouch, 1);
+        brickSmashSound = SP.load( this, R.raw.bricksmash, 1);
         setContentView(view);
         System.out.println(tag + model);
         System.out.println(tag + view);
@@ -69,12 +77,11 @@ public class CannonBallActivity extends Activity {
             while (running) {
                 try {
                     rect = new Rect(0, 0, view.getWidth(), view.getHeight());
-                    // System.out.println("Bubble Thread: " + rect);
                     getModel().update(rect, Constants.delay);
                     view.postInvalidate();
                     Thread.sleep(Constants.delay);
                 } catch (Exception e) {
-                    System.out.println("BubbleThread: " + e);
+                    System.out.println("CannonBallActivity Thread: " + e);
                     e.printStackTrace();
                 }
             }
