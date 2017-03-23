@@ -3,7 +3,8 @@ package com.example.leon.cannonball;
 public interface Constants {
 
     int greyScore = 10;
-    int magentaScore = 40;
+    int magentaScore = 30;
+    int yellowScore = 75;
     int blockerScore = -20;
 
     float velocityScale = 5;

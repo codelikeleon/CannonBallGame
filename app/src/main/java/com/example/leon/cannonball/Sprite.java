@@ -2,9 +2,6 @@ package com.example.leon.cannonball;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Rect;
-
-import java.util.Random;
 
 import static com.example.leon.cannonball.Constants.*;
 
@@ -13,7 +10,6 @@ public class Sprite {
     Vector2d s, v;
     Paint fg;
 
-    static Random random = new Random();
     float width = CannonBallActivity.getScreenWidth() / 10;
     float height = CannonBallActivity.getScreenHeight() / 40;
 
@@ -25,25 +21,17 @@ public class Sprite {
     public Sprite() {
         s = new Vector2d();
         v = new Vector2d();
-//        reSpawn();
     }
 
     public void setPos( float x, float y ) {
         s.set( x, y );
     }
 
-//    public void reSpawn() {
-//        s.set( 0, 0 );
-//        v.set( velocityScale * ( float ) random.nextGaussian(), velocityScale * ( float ) random.nextGaussian() );
-//    }
 
     public int getScore() {
-        return fg == GameModel.paintMagenta ? magentaScore : greyScore;
-    }
-
-    public void update( Rect rect ) {
-//        s.add(v);
-//        s.wrap(rect.width(), rect.height());
+        if ( fg == GameModel.paintLightGrey ) return greyScore;
+        else if (fg == GameModel.paintMagenta ) return magentaScore;
+        else return yellowScore;
     }
 
     public boolean contains( float x, float y ) {

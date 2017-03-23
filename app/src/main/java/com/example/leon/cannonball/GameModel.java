@@ -5,8 +5,10 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import static com.example.leon.cannonball.Constants.blockerScore;
+import static com.example.leon.cannonball.Constants.yellowScore;
 
 /**
  * Created by Leon on 18/03/2017.
@@ -14,12 +16,15 @@ import static com.example.leon.cannonball.Constants.blockerScore;
 
 public class GameModel {
 
+    static String TAG = "GameModel: ";
+
     ArrayList<Sprite> sprites;
-    int numSprites = 50;
+    Random rand = new Random();
+    int numSprites = 50;        //Max numSprites = 50
     int score;
     int timeRemaining = 10000;
 
-    static Paint paintLightGrey, paintMagenta, paintBlack;
+    static Paint paintLightGrey, paintMagenta, paintYellow;
     public Cannon cannon;
     public Blocker blocker;
     public Cannonball cannonball;
@@ -35,17 +40,17 @@ public class GameModel {
         paintMagenta.setStyle( Paint.Style.FILL_AND_STROKE );
         paintMagenta.setAntiAlias( true );
 
-        paintBlack = new Paint();
-        paintBlack.setColor( Color.BLACK );
-        paintBlack.setStyle( Paint.Style.FILL );
-        paintBlack.setAntiAlias( true );
+        paintYellow = new Paint();
+        paintYellow.setColor( Color.YELLOW );
+        paintYellow.setStyle( Paint.Style.FILL_AND_STROKE );
+        paintYellow.setAntiAlias( true );
     }
 
     public GameModel() {
-        System.out.println( "GameModel: GameModel()" );
+        System.out.println( TAG + "GameModel()" );
         initSprites();
         score = 0;
-        System.out.println( "GameModel:  finished init()" );
+        System.out.println( TAG + "Finished initSprites()" );
     }
 
     public void update( Rect rectangle, int delay ) {
@@ -56,13 +61,15 @@ public class GameModel {
         if ( !gameOver() ) {
             if ( blocker.contains( cannonball.pos.x, cannonball.pos.y ) ) {
                 cannonball.hitBlocker();
-                CannonBallActivity.SP.play(CannonBallActivity.ouchSound, 1, 1, 0, 0, 1);
+                CannonBallActivity.SP.play( CannonBallActivity.OUCH_SOUND, 1, 1, 0, 0, 1 );
                 score += blockerScore;
             }
-            for (Sprite sprite : sprites) {
+            for ( Sprite sprite : sprites ) {
                 if ( sprite.contains( cannonball.pos.x, cannonball.pos.y ) ) {
                     sprites.remove( sprite );
-                    CannonBallActivity.SP.play(CannonBallActivity.brickSmashSound, 1, 1, 0, 0, 1);
+                    if ( sprite.getScore() == yellowScore )
+                        CannonBallActivity.SP.play( CannonBallActivity.TWINKLE_SOUND, 1, 1, 0, 0, 1 );
+                    else CannonBallActivity.SP.play( CannonBallActivity.BRICK_SMASH_SOUND, 1, 1, 0, 0, 1 );
                     score += sprite.getScore();
                     cannonball.reset();
                 }
@@ -77,7 +84,7 @@ public class GameModel {
         return timeRemaining <= 0;
     }
 
-    public void click(float x, float y) {
+    public void click( float x, float y ) {
         cannon.moveCannon( x );
         cannonball.moveCannonBall( x );
         cannonball.fireCannon();
@@ -86,8 +93,14 @@ public class GameModel {
     void initSprites() {
         sprites = new ArrayList<>();
         for ( int i = 0; i < numSprites; i++ ) {
-            Paint p = i % 3 == 0 ? paintMagenta : paintLightGrey;   //TODO randomise block generation + add multiple colours?
+
+            int selector = rand.nextInt( 10 );
+            Paint p;
+            if ( selector < 1 ) p = paintYellow;
+            else if ( selector < 4 ) p = paintMagenta;
+            else p = paintLightGrey;
             Sprite sprite = new Sprite( p );
+
             if ( i >= 40 ) {
                 sprite.setPos( ( i - 40 ) * sprite.width, 40 + sprite.height * 4 );
                 sprites.add( sprite );
@@ -95,7 +108,7 @@ public class GameModel {
                 sprite.setPos( ( i - 30 ) * sprite.width, 40 + sprite.height * 3 );
                 sprites.add( sprite );
             } else if ( i >= 20 ) {
-                sprite.setPos( (i - 20) * sprite.width, 40 + sprite.height * 2 );
+                sprite.setPos( ( i - 20 ) * sprite.width, 40 + sprite.height * 2 );
                 sprites.add( sprite );
             } else if ( i >= 10 ) {
                 sprite.setPos( ( i - 10 ) * sprite.width, 40 + sprite.height );
