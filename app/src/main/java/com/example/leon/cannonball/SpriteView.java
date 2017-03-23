@@ -3,6 +3,7 @@ package com.example.leon.cannonball;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,9 +14,16 @@ public class SpriteView extends View {
     private Paint textPaint;
     CannonBallActivity controller;
     public Cannon cannon;
+    public Blocker blocker;
+    public Cannonball cannonball;
+    public Drawable background;
 
     static String tag = "Bubble Sprite View: ";
     public void onDraw(Canvas g) {
+
+        background = getResources().getDrawable(R.drawable.beach_background);
+        background.setBounds( 0, 0, CannonBallActivity.getScreenWidth(), CannonBallActivity.getScreenHeight() );
+        background.draw( g );
 
         // get the model
         List<Sprite> sprites = controller.getModel().sprites;
@@ -24,8 +32,11 @@ public class SpriteView extends View {
             sprite.draw(g);
         }
 
-        cannon.draw( g );
 
+
+        cannon.draw( g );
+        blocker.draw( g );
+        cannonball.draw( g );
 
         textPaint = new Paint();
         textPaint.setTextSize((int) (30));
@@ -48,6 +59,10 @@ public class SpriteView extends View {
         this.controller = (CannonBallActivity) context;
         controller.getModel().cannon = new Cannon( context );
         this.cannon = controller.getModel().cannon;
+        controller.getModel().blocker = new Blocker( context );
+        this.blocker = controller.getModel().blocker;
+        controller.getModel().cannonball = new Cannonball( context );
+        this.cannonball = controller.getModel().cannonball;
     }
 
     public SpriteView(Context context, AttributeSet attrs) {
@@ -55,6 +70,10 @@ public class SpriteView extends View {
         this.controller = (CannonBallActivity) context;
         controller.getModel().cannon = new Cannon( context );
         this.cannon = controller.getModel().cannon;
+        controller.getModel().blocker = new Blocker( context );
+        this.blocker = controller.getModel().blocker;
+        controller.getModel().cannonball = new Cannonball( context );
+        this.cannonball = controller.getModel().cannonball;
     }
 
     public SpriteView(Context context, AttributeSet attrs, int defStyle) {
@@ -62,6 +81,10 @@ public class SpriteView extends View {
         this.controller = (CannonBallActivity) context;
         controller.getModel().cannon = new Cannon( context );
         this.cannon = controller.getModel().cannon;
+        controller.getModel().blocker = new Blocker( context );
+        this.blocker = controller.getModel().blocker;
+        controller.getModel().cannonball = new Cannonball( context );
+        this.cannonball = controller.getModel().cannonball;
     }
 
     @Override

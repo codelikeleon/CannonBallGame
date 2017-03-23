@@ -19,6 +19,8 @@ public class GameModel {
 
     static Paint paintLightGrey, paintMagenta, paintBlack;
     public Cannon cannon;
+    public Blocker blocker;
+    public Cannonball cannonball;
 
     static {
         paintLightGrey = new Paint();
@@ -50,8 +52,9 @@ public class GameModel {
         if (rectangle.width() <= 0 || rectangle.height() <= 0) return;
 
         if (!gameOver()) {
-            for (Sprite sprite : sprites) sprite.update(rectangle);
-            timeRemaining -= delay;
+            for (Sprite sprite : sprites)sprite.update(rectangle);
+//            timeRemaining -= delay;
+            blocker.update( rectangle );
         }
     }
 

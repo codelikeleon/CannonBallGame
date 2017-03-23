@@ -48,7 +48,7 @@ public class Sprite {
 
     public void update(Rect rect) {
 //        s.add(v);
-        s.wrap(rect.width(), rect.height());
+//        s.wrap(rect.width(), rect.height());
     }
 
     public boolean contains( float x, float y ) {
@@ -58,5 +58,4 @@ public class Sprite {
     public void draw(Canvas c) {
         c.drawRect(s.x, s.y, s.x + width, s.y + height, fg);
     }
-    //                                                      ^width       ^height  of sprite
 }
