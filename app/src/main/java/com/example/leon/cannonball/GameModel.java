@@ -15,7 +15,11 @@ import static com.example.leon.cannonball.Constants.yellowScore;
 import static com.example.leon.cannonball.Constants.yellowTimeBonus;
 
 /**
- * Created by Leon on 18/03/2017.
+ * A model class which controls the movement of graphics on screen and contains data for the
+ * main mechanics of the game, such as score and remaining time. The Sprites (targets) are created
+ * here. Uses static instantiation to set the design of the targets/sprites.
+ *
+ * @author 028016
  */
 
 public class GameModel {
@@ -60,6 +64,14 @@ public class GameModel {
         System.out.println( TAG + "Finished initSprites()" );
     }
 
+    /**
+     * This method affects the movement of all graphics on screen, updating their positions and
+     * velocities. It is the main game loop which calculates every 'frame', as well as score and
+     * other variables such as remaining time.
+     *
+     * @param rectangle The rectangular draw space
+     * @param delay the amount to reduce the time remaining by
+     */
     public void update( Rect rectangle, int delay ) {
 
         // check that the drawing rectangle is valid
@@ -92,20 +104,44 @@ public class GameModel {
         }
     }
 
+    /**
+     * If the game has finished with a win condition, i.e. there are no targets left and there is
+     * still time reamining, a boolean true is returned, otherwise false.
+     *
+     * @return True if winning condition has been reached
+     */
     public boolean hasWon() {
         return sprites.isEmpty() && timeRemaining > 0;
     }
 
+    /**
+     * If the game has finished with a loss condition, i.e. time has run out and not all targets
+     * have been destroyed, a boolean true is returned, otherwise false.
+     *
+     * @return True if losing condition has been reached
+     */
     public boolean hasLost() {
         return timeRemaining <= 0;
     }
 
+    /**
+     * Moves the Cannon and Cannonball to the specified x-coordinate. Causes the Cannonball to enter
+     * its 'firing' state. Executed within the touch listener.
+     *
+     * @param x x-coordinate of of the position to move the Cannon and Cannonball
+     */
     public void click( float x ) {
         cannon.moveCannon( x );
         cannonball.moveCannonBall( x );
         cannonball.fireCannon();
     }
 
+    /**
+     * Uses Roulette wheel selection to determine the number of different coloured sprites. There
+     * is a 1/10 chance of a yellow sprite, 3/10 chance for a magenta sprite and 6/10 chance for a
+     * grey sprite. The sprites are then positioned on screen alongside each other, and stacked if
+     * there are more than 5 on a row.
+     */
     void initSprites() {
         sprites = new ArrayList<>();
         for ( int i = 0; i < numSprites; i++ ) {

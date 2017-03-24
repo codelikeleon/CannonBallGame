@@ -1,5 +1,9 @@
 package com.example.leon.cannonball;
 
+/**
+ * Interface for storing the constants used to manipulate key game mechanics such as scores and
+ * movement speed.
+ */
 public interface Constants {
 
     int greyScore = 10;
@@ -13,7 +17,6 @@ public interface Constants {
 
     float velocityScale = 4;
     float cannonShootSpeed = 35;
-    String highScoreFile = "highScore.txt";
 
     int delay = 50;
 }

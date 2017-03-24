@@ -14,10 +14,10 @@
 
     <!-- Help Menu -->
     <string name="help_title">How to play:</string>
-    <string name="help_instructions">1. This is some text explaining how the game works.\n
-        2. This is some text explaining how the game works.\n
-        3. This is some text explaining how the game works.\n
-        4. This is some text explaining how the game works.</string>
+    <string name="help_instructions">1. Shoot the cannon by touching the screen in the direction you would like to shoot.\n
+        2. Grey targets are worth the least points, magenta targets are more, and yellow targets are the most.\n
+        3. Avoid the crabs! Hitting them will cause you to lose points.\n
+        4. Destroy all targets before time runs out. Hitting targets provides a time bonus.</string>
 
     <!-- About Menu -->
     <string name="about_title">Candidate Number</string>

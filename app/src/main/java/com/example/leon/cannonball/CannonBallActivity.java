@@ -12,6 +12,12 @@ import android.os.Bundle;
 //TODO: Remove action bar / Change text
 //TODO: Documentation
 
+/**
+ * The Controller activity. This is the activity where the game is played. Contains static variables
+ * to access sound effects, device screen dimensions and a thread for the game.
+ *
+ * @author 028016
+ */
 public class CannonBallActivity extends Activity {
 
     SpriteView view;
@@ -42,10 +48,18 @@ public class CannonBallActivity extends Activity {
         loadSound();
     }
 
+    /**
+     * Provides the model.
+     *
+     * @return the model.
+     */
     public GameModel getModel() {
         return model;
     }
 
+    /**
+     * This method is executed upon resuming the app, e.g. returning from the home screen
+     */
     public void onResume() {
         super.onResume();
         System.out.println( TAG + "onResume: " );
@@ -55,6 +69,9 @@ public class CannonBallActivity extends Activity {
         runner.start();
     }
 
+    /**
+     * This method is executed upon pausing the app, e.g. going to the home screen.
+     */
     public void onPause() {
         super.onPause();
         runner.running = false;
@@ -65,6 +82,10 @@ public class CannonBallActivity extends Activity {
         }
     }
 
+    /**
+     * Creates a static SoundPool and loads up all sound effects stored in resources and used for
+     * the game. They can be easily accessed elsewhere due to their static context.
+     */
     private void loadSound() {
         SP = new SoundPool.Builder().setMaxStreams( 5 ).build();
         CANNON_SOUND = SP.load( this, R.raw.cannon_fire, 1 );
@@ -73,13 +94,28 @@ public class CannonBallActivity extends Activity {
         TWINKLE_SOUND = SP.load( this, R.raw.twinkle, 1 );
     }
 
+    /**
+     * Provides the screen width of the device currently running the application.
+     *
+     * @return The width of the device's screen as an integer
+     */
     public static int getScreenWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
+
+    /**
+     * Provides the screen height of the device currently running the application.
+     *
+     * @return The height of the device's screen as an integer
+     */
     public static int getScreenHeight() {
         return Resources.getSystem().getDisplayMetrics().heightPixels;
     }
 
+    /**
+     * A thread extension class where the game graphics are created and constantly updated throught
+     * a continuous loop.
+     */
     private class GameThread extends Thread {
 
         boolean running = true;

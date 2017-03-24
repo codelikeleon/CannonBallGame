@@ -15,9 +15,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-/** //TODO: Documentation
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
+/**
+ * Class for the Main Menu activity, attaching buttons to their listeners and controlling colour
+ * changes.
+ *
+ * @author 028016
  */
 public class MainMenuActivity extends AppCompatActivity implements Button.OnClickListener {
 
@@ -32,6 +34,12 @@ public class MainMenuActivity extends AppCompatActivity implements Button.OnClic
 
     static int LEVEL;
 
+    /**
+     * Resets the colour of all buttons to their default colour, but changes the specified button
+     * to green, making it appear 'selected'
+     *
+     * @param btn The button to highlight in green
+     */
     public void setSelectedLevelButtonColour( Button btn ) {
 
         btn_lvl_1.setBackgroundColor( 0xFF3079AB );
@@ -43,6 +51,12 @@ public class MainMenuActivity extends AppCompatActivity implements Button.OnClic
         btn.setBackgroundColor( 0xFF33CC33 );
     }
 
+    /**
+     * Attaches all buttons to the click listeners, and starts the media service. This method is
+     * executed upon creation of the activity, and therefore upon loading the app.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
@@ -61,6 +75,13 @@ public class MainMenuActivity extends AppCompatActivity implements Button.OnClic
         startService( media );
     }
 
+    /**
+     * The method that is executed when views on the main menu are clicked. Clicking the level
+     * buttons causes the static LEVEL variable to be set to the chosen level, and the play button
+     * creates a new activity where the game will be played.
+     *
+     * @param v the view that is clicked
+     */
     @Override
     public void onClick( View v ) {
 
@@ -93,7 +114,7 @@ public class MainMenuActivity extends AppCompatActivity implements Button.OnClic
             case R.id.menu_play_btn:
                 if ( LEVEL > 0 && LEVEL <= 5 ) {
                     System.out.println( "Starting level " + LEVEL );
-                    Intent gameActivity = new Intent(this, CannonBallActivity.class);
+                    Intent gameActivity = new Intent( this, CannonBallActivity.class );
                     startActivity(gameActivity);
                 }
                 break;
@@ -107,7 +128,6 @@ public class MainMenuActivity extends AppCompatActivity implements Button.OnClic
                 Intent aboutActivity = new Intent( this, AboutActivity.class );
                 startActivity( aboutActivity );
                 break;
-
         }
     }
 }

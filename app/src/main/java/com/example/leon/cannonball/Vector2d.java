@@ -1,9 +1,9 @@
 package com.example.leon.cannonball;
 
-
+/**
+ * A class providing the mathematical operations for vectors.
+ */
 public class Vector2d {
-    // of course, also require the methods for adding
-    // to these vectors
 
     public static void main(String[] args) {
         // main method for convenient testing
