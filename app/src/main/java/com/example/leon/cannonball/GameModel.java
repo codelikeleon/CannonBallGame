@@ -1,6 +1,5 @@
 package com.example.leon.cannonball;
 
-import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -27,6 +26,7 @@ public class GameModel {
     int score;
     int timeRemaining = 10000;
     int numSprites = 5 * MainMenuActivity.LEVEL;     //Max numSprites = 50
+
 
     static Paint paintLightGrey, paintMagenta, paintYellow;
     public Cannon cannon;
@@ -64,12 +64,7 @@ public class GameModel {
 
         // check that the drawing rectangle is valid
         if ( rectangle.width() <= 0 || rectangle.height() <= 0 ) return;
-        System.out.println( "PLAYING LEVEL " + MainMenuActivity.LEVEL );
-        if ( hasWon() ) {
-
-        } else if ( hasLost() ) {
-            
-        } else {
+        if ( !hasLost() && !hasWon() ) {
             if ( blocker.contains( cannonball.getCentreXPos(), cannonball.getCentreYPos() ) ) {
                 cannonball.hitBlocker();
                 CannonBallActivity.SP.play( CannonBallActivity.OUCH_SOUND, 1, 1, 0, 0, 1 );

@@ -26,5 +26,6 @@
     <!-- Game mechanics -->
     <string name="time_remaining_format">Time left: %d seconds</string>
     <string name="score_format">Score: %d</string>
+    <string name="return_to_menu">Main Menu</string>
 
 </resources>
