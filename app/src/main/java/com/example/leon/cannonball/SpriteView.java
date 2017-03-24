@@ -36,7 +36,7 @@ public class SpriteView extends View {
     private boolean dialogCreated = false;
 
     /**
-     * Draws the intial onbjects onto the canvas and keeps a list of all active Sprites. Also checks
+     * Draws the initial objects onto the canvas and keeps a list of all active Sprites. Also checks
      * for game ending conditions
      *
      * @param g The canvas to be drawn on

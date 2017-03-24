@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-//TODO: Change title of actionbar to About
-
 public class AboutActivity extends AppCompatActivity implements Button.OnClickListener {
 
     @Override

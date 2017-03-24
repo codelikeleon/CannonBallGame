@@ -6,12 +6,6 @@ import android.graphics.Rect;
 import android.media.SoundPool;
 import android.os.Bundle;
 
-//TODO: App Icon
-//TODO: High Scores
-//TODO: Levels
-//TODO: Remove action bar / Change text
-//TODO: Documentation
-
 /**
  * The Controller activity. This is the activity where the game is played. Contains static variables
  * to access sound effects, device screen dimensions and a thread for the game.
